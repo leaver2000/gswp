@@ -1,0 +1,11 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "time",
+        "lat",
+        "lon"
+    ],
+    "coordinates": "lon lat",
+    "long_name": "0-255 Brightness Temperature",
+    "type": "VISR",
+    "units": "K"
+}

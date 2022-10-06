@@ -1,0 +1,11 @@
+#! /opt/conda/envs/venv/bin/python
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--start")
+parser.add_argument("--end")
+parser.add_argument("--path")
+# bin/download_probsevere --path=./data-bucket --start=2022-03-01 --end=2022-08-01
+if __name__ == "__main__":
+    args = parser.parse_args()

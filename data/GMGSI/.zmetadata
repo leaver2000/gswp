@@ -1,0 +1,270 @@
+{
+    "metadata": {
+        ".zattrs": {
+            "Conventions": "CF-1.4",
+            "NCO": "netCDF Operators version 4.7.5 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)",
+            "Satellite Sensor": "DERIVED DATA",
+            "Source": "McIDAS Area File",
+            "history": "Thu Sep  1 00:34:25 2022: ncks -d xc,0,4998 tempo.nc out.nc",
+            "instrument_name": "GLOBCOMPWV",
+            "time_coverage_start": "2022-09-01T00:00:00"
+        },
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "GMGSI_LW/.zarray": {
+            "chunks": [
+                1,
+                3000,
+                4999
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": -9999.0,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2,
+                3000,
+                4999
+            ],
+            "zarr_format": 2
+        },
+        "GMGSI_LW/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "lat",
+                "lon"
+            ],
+            "coordinates": "lon lat",
+            "long_name": "0-255 Brightness Temperature",
+            "type": "VISR",
+            "units": "none"
+        },
+        "GMGSI_SSR/.zarray": {
+            "chunks": [
+                1,
+                3000,
+                4999
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": -9999.0,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2,
+                3000,
+                4999
+            ],
+            "zarr_format": 2
+        },
+        "GMGSI_SSR/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "lat",
+                "lon"
+            ],
+            "coordinates": "lon lat",
+            "long_name": "0-255 Brightness Temperature",
+            "type": "VISR",
+            "units": "K"
+        },
+        "GMGSI_SW/.zarray": {
+            "chunks": [
+                1,
+                3000,
+                4999
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": -9999.0,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2,
+                3000,
+                4999
+            ],
+            "zarr_format": 2
+        },
+        "GMGSI_SW/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "lat",
+                "lon"
+            ],
+            "coordinates": "lon lat",
+            "long_name": "0-255 Brightness Temperature",
+            "type": "VISR",
+            "units": "none"
+        },
+        "GMGSI_VIS/.zarray": {
+            "chunks": [
+                1,
+                3000,
+                4999
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": -9999.0,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2,
+                3000,
+                4999
+            ],
+            "zarr_format": 2
+        },
+        "GMGSI_VIS/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "lat",
+                "lon"
+            ],
+            "coordinates": "lon lat",
+            "long_name": "0-255 Brightness Temperature",
+            "type": "VISR",
+            "units": "none"
+        },
+        "GMGSI_WV/.zarray": {
+            "chunks": [
+                1,
+                3000,
+                4999
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": -9999.0,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2,
+                3000,
+                4999
+            ],
+            "zarr_format": 2
+        },
+        "GMGSI_WV/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time",
+                "lat",
+                "lon"
+            ],
+            "coordinates": "lon lat",
+            "long_name": "0-255 Brightness Temperature",
+            "type": "VISR",
+            "units": "none"
+        },
+        "lat/.zarray": {
+            "chunks": [
+                3000
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                3000
+            ],
+            "zarr_format": 2
+        },
+        "lat/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "lat"
+            ]
+        },
+        "lon/.zarray": {
+            "chunks": [
+                4999
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                4999
+            ],
+            "zarr_format": 2
+        },
+        "lon/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "lon"
+            ]
+        },
+        "time/.zarray": {
+            "chunks": [
+                2
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i4",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                2
+            ],
+            "zarr_format": 2
+        },
+        "time/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time"
+            ],
+            "calendar": "proleptic_gregorian",
+            "long_name": "seconds since 1970-1-1 0:0:0",
+            "units": "seconds since 1970-01-01"
+        }
+    },
+    "zarr_consolidated_format": 1
+}
