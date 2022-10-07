@@ -123,7 +123,6 @@ class Transfer(Singleton):
 
         df = pd.concat(geodataframes()).set_index("time").pipe(wrangle_geometry)
 
-
         float32_cols = FLOAT32_COLS + ["MINX", "MINY", "MAXX", "MAXY", "X", "Y"]
         df[float32_cols] = df[float32_cols].astype(np.float32)
         # 32-bit-precision floating-point number type: sign bit, 8 bits exponent, 23 bits mantissa.

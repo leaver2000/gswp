@@ -1,13 +1,25 @@
+from collections import namedtuple
+from typing import Callable
+
 from .typing import Self
+from .exceptions import SingletonError
 
 
-class Error(Exception):
-    def __init__(self, *args: object) -> None:
-        super().__init__(self.__doc__, *args)
+def _get_members(cls: type):
+    def callback(func: Callable):
+        return lambda *args, **kwargs: func(cls, *args, **kwargs)
+
+    for key, value in vars(cls).items():
+        if key.startswith("__"):
+            continue
+        if isinstance(value, Callable):
+            value = callback(value)
+        yield key, value
 
 
-class SingletonError(Error):
-    """singleton type should not be instantiated"""
+def frozen_singleton(cls: type[Self]) -> Self:
+    members = dict(_get_members(cls))
+    return namedtuple(cls.__name__, members.keys())(**members)
 
 
 class Singleton:
