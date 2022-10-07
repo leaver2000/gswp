@@ -154,6 +154,7 @@ RUN python3 -m pip install \
         numpy \
         pandas \
         geopandas \
+        nvector==0.7.7 \
         xarray \
         dask \
         zarr \
