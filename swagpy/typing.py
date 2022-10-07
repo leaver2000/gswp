@@ -1,9 +1,23 @@
+__all__ = [
+    "Self",
+    "floating1DArray",
+    "unsignedinteger1DArray",
+    "Properties",
+    "Geometry",
+    "Feature",
+    "FeatureCollection",
+    "TimeLike",
+]
 from datetime import datetime
 from typing import TypeVar, TypedDict, Literal
 import pandas as pd
+import numpy as np
 
 Self = TypeVar("Self")
 
+floating1DArray = np.ndarray[tuple[int], np.floating]
+unsignedinteger1DArray = np.ndarray[tuple[int], np.unsignedinteger]
+TimeLike = datetime | str | pd.Timestamp
 
 class Properties(TypedDict):
     MUCAPE: int
@@ -54,4 +68,4 @@ class FeatureCollection(TypedDict):
     features: list[Feature]
 
 
-TimeLike = datetime | str | pd.Timestamp
+
