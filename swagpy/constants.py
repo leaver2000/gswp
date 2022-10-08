@@ -1,6 +1,5 @@
 __all__ = ["Store"]
 from pathlib import Path
-
 import xarray as xr
 
 from .patterns import frozen_singleton
@@ -10,24 +9,26 @@ MRMS_BOUNDS = (-130, -60, 20, 55)
 
 
 @frozen_singleton
-class Store:
+class STORE:
     """store for various directories"""
 
-    data = Path.cwd().parent / "data"
-    gmgsi = data / "GMGSI"
+    DATA = Path.cwd().parent / "data"
+    GMGSI = DATA / "GMGSI"
     """Global Mosaic of Geostationary Satellite Imagery (GMGSI) Product"""
-    probsevere = data / "PROBSEVERE"
-    gswr = data / "GSWR"
+    PROBSEVERE = DATA / "PROBSEVERE"
+    """NOAA/CIMMS ProbSevere"""
+    GSWR = DATA / "GSWR"
 
 
 @frozen_singleton
 class PROBSEVERE:
-    """probsevere dataset constants"""
+    """NOAA/CIMMS ProbSevere"""
 
-    store = Store.probsevere
-    validtime_template = "%Y%m%d_%H%M%S %Z"
+    STORE = STORE.PROBSEVERE
 
-    float32 = (
+    VALIDTIME_TEMPLATE = "%Y%m%d_%H%M%S %Z"
+
+    FLOAT32 = (
         "EBSHEAR",
         "MEANWIND_1-3kmAGL",
         "MESH",
@@ -43,9 +44,9 @@ class PROBSEVERE:
         "LJA",
     )
 
-    int32 = ("MLCIN",)
+    INT32 = ("MLCIN",)
 
-    uint32 = (
+    UINT32 = (
         "MUCAPE",
         "MLCAPE",
         "SRH01KM",
@@ -55,18 +56,18 @@ class PROBSEVERE:
         "ID",
     )
 
-    uint8 = ("PS",)
+    UINT8 = ("PS",)
 
-    all_columns = uint8 + uint32 + int32 + float32
-    geometry = ("MINX", "MINY", "MAXX", "MAXY", "X", "Y")
+    PARAMETERS = UINT8 + UINT32 + INT32 + FLOAT32
+    GEOMETRY = ("minx", "miny", "maxx", "maxy", "x", "y")
 
-    def load(self):
-        return xr.open_zarr(self.store)
+    def load(self) -> xr.Dataset:
+        return xr.open_zarr(self.STORE)
 
 
 @frozen_singleton
 class GMGSI:
-    store = Store.gmgsi
+    STORE = STORE.GMGSI
 
     def load(self):
-        return xr.open_zarr(self.store)
+        return xr.open_zarr(self.STORE)

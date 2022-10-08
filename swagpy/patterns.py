@@ -1,3 +1,4 @@
+__all__ = ["Singleton", "frozen_singleton"]
 from collections import namedtuple
 from typing import Callable
 

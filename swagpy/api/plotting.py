@@ -3,10 +3,11 @@ from matplotlib.figure import Figure
 import uuid
 import cartopy.crs as ccrs
 from cartopy.mpl.geoaxes import GeoAxes
+
 # from cartopy.mpl.gridliner import Gridliner
 
 
-def axes(projection:ccrs.Projection) -> GeoAxes:
+def axes(projection: ccrs.Projection) -> GeoAxes:
     return plt.axes(projection=projection)
 
 
