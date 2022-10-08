@@ -19,6 +19,7 @@ floating1DArray = np.ndarray[tuple[int], np.floating]
 unsignedinteger1DArray = np.ndarray[tuple[int], np.unsignedinteger]
 TimeLike = datetime | str | pd.Timestamp
 
+
 class Properties(TypedDict):
     MUCAPE: int
     MLCAPE: int
@@ -66,6 +67,3 @@ class FeatureCollection(TypedDict):
     productionTime: str
     machine: str
     features: list[Feature]
-
-
-

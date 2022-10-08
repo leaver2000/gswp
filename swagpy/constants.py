@@ -1,5 +1,8 @@
 __all__ = ["Store"]
 from pathlib import Path
+
+import xarray as xr
+
 from .patterns import frozen_singleton
 
 MRMS_BOUNDS = (-130, -60, 20, 55)
@@ -56,3 +59,14 @@ class PROBSEVERE:
 
     all_columns = uint8 + uint32 + int32 + float32
     geometry = ("MINX", "MINY", "MAXX", "MAXY", "X", "Y")
+
+    def load(self):
+        return xr.open_zarr(self.store)
+
+
+@frozen_singleton
+class GMGSI:
+    store = Store.gmgsi
+
+    def load(self):
+        return xr.open_zarr(self.store)
