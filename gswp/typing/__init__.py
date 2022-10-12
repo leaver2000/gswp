@@ -7,17 +7,36 @@ __all__ = [
     "Feature",
     "FeatureCollection",
     "TimeLike",
+    "Array",
+    "ndim",
+    "dim",
 ]
 from datetime import datetime
-from typing import TypeVar, TypedDict, Literal
+from typing import TypeVar, TypedDict, Literal, Generic
 import pandas as pd
 import numpy as np
+from ..typing import dim as dim
+
 
 Self = TypeVar("Self")
+_DIM = TypeVar("_DIM", dim.one, dim.two, dim.three, dim.four, dim.five, dim.six, dim.N)
+_DType = TypeVar("_DType")
 
-floating1DArray = np.ndarray[tuple[int], np.floating]
-unsignedinteger1DArray = np.ndarray[tuple[int], np.unsignedinteger]
+
+class ndim(Generic[_DIM]):
+    ...
+
+
+_DimType = TypeVar("_DimType", bound=ndim)
+
+
+class Array(Generic[_DType, _DimType]):
+    ...
+
+
 TimeLike = datetime | str | pd.Timestamp
+
+GMGSIProducts = Literal["GMGSI_LW", "GMGSI_SSR", "GMGSI_SW", "GMGSI_VIS", "GMGSI_WV"]
 
 
 class Properties(TypedDict):

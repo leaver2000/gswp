@@ -1,5 +1,5 @@
 {
-	"name": "swagpy",
+	"name": "gswp",
 	"build": {
 		"dockerfile": "../Dockerfile",
 		"context": "..",
@@ -59,8 +59,8 @@
 	"runArgs": ["--gpus=all"],
 	// development path options
 	"remoteEnv": {
-		"PYTHONPATH": "/workspaces/swagpy/:${containerEnv:PYTHONPATH}:",
-		"JUPYTER_PATH": "/workspaces/swagpy/:${containerEnv:JUPYTER_PATH}"
+		"PYTHONPATH": "/workspaces/gswp/:${containerEnv:PYTHONPATH}:",
+		"JUPYTER_PATH": "/workspaces/gswp/:${containerEnv:JUPYTER_PATH}"
 	},
 	"remoteUser": "vscode"
 }
