@@ -1,13 +1,13 @@
-__all__ = ["Store"]
+__all__ = ["STORE"]
 from datetime import datetime
 from pathlib import Path
-from typing import Literal
 import xarray as xr
 
 from .patterns import frozen_singleton
 from .typing import GMGSIProducts
+
 MRMS_BOUNDS = (-130, -60, 20, 55)
-"""CONUS MRMS BOUNDS (W, E, S, N) """
+"""CONUS MRMS BOUNDS (W, E, S, N)"""
 
 
 @frozen_singleton
@@ -18,9 +18,9 @@ class STORE:
     GMGSI = DATA / "GMGSI"
     """Global Mosaic of Geostationary Satellite Imagery (GMGSI) Product"""
     GMGSI_LW = GMGSI / "LONGWAVE"
-    GMGSI_SW = GMGSI /"SHORTWAVE"
-    GMGSI_WV =  GMGSI /"WATERVAPOR"
-    GMGSI_VIS =  GMGSI /"VISIBLE"
+    GMGSI_SW = GMGSI / "SHORTWAVE"
+    GMGSI_WV = GMGSI / "WATERVAPOR"
+    GMGSI_VIS = GMGSI / "VISIBLE"
 
     PROBSEVERE = DATA / "PROBSEVERE"
     """NOAA/CIMMS ProbSevere"""
@@ -99,6 +99,7 @@ class PROBSEVERE:
     X = "x"
     Y = "y"
     GEOMETRY = frozenset((MINX, MINY, MAXX, MAXY, X, Y))
+
     def column_dtypes(self):
         return (
             list(self.FLOAT32.union(self.GEOMETRY)),
@@ -106,6 +107,7 @@ class PROBSEVERE:
             list(self.UINT32),
             list(self.UINT8),
         )
+
     def load(self) -> xr.Dataset:
         return xr.open_zarr(self.STORE)
 
@@ -118,23 +120,25 @@ class GMGSI:
     VISIBLE = "GMGSI_VIS"
     STORE = STORE.GMGSI
     PARAMETERS = frozenset((LONG_WAVE, SHORT_WAVE, WATER_VAPOR, VISIBLE))
-    DIRECTORY = dict(zip(PARAMETERS,("LONGWAVE","SHORTWAVE","WATERVAPOR","VISIBLE")))
+    DIRECTORY = dict(
+        zip(PARAMETERS, ("LONGWAVE", "SHORTWAVE", "WATERVAPOR", "VISIBLE"))
+    )
 
     def load(self) -> xr.Dataset:
         import dask
+
         def generate():
             for path in self.DIRECTORY.values():
                 store = self.STORE / path
                 if not store.exists():
                     continue
                 yield xr.open_zarr(store)
+
         with dask.config.set(**{"array.slicing.split_large_chunks": True}):
             return xr.merge(generate())
-        # return xr.merge([xr.open_zarr(self.STORE / path) for path in self.DIRECTORY.values()])
 
-    def url(self, product:GMGSIProducts, date:datetime) -> str:
+    def url(self, product: GMGSIProducts, date: datetime) -> str:
         return f"s3://noaa-gmgsi-pds/{product}/{date:%Y}/{date:%m}/{date:%d}"
-
 
 
 @frozen_singleton
