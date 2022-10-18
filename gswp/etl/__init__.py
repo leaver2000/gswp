@@ -1,7 +1,7 @@
 __all__ = ["gmgsi", "probsevere"]
 from pathlib import Path
 from datetime import datetime
-from .typing import GMGSIProducts
+from ..typing import GMGSIProducts
 from ..etl import _gmgsi, _probsevere
 
 
