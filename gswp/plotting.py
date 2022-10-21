@@ -5,7 +5,6 @@ import cartopy.crs as ccrs
 from cartopy.mpl.geoaxes import GeoAxes
 
 
-
 def axes(projection: ccrs.Projection) -> GeoAxes:
     return plt.axes(projection=projection)
 

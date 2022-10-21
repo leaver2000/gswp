@@ -9,7 +9,9 @@ import dask
 
 INTERVAL = 60
 TIME_RANGE = 1
-TIME="time"
+TIME = "time"
+INDEX.TIME = ""
+
 
 def constrain_bounds(
     ds: xr.Dataset, w: float, e: float, s: float, n: float
@@ -23,7 +25,7 @@ def constrain_bounds(
         return ds.sel(indexers)
 
 
-def unpack_datetimeindex(*args: np.ndarray) ->Iterable[pd.DatetimeIndex]:
+def unpack_datetimeindex(*args: np.ndarray) -> Iterable[pd.DatetimeIndex]:
     for da in args:
         yield pd.to_datetime(da)
 

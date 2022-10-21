@@ -1,4 +1,5 @@
 __all__ = ["STORE"]
+from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
 import xarray as xr
@@ -114,6 +115,24 @@ class PROBSEVERE:
 
 @frozen_singleton
 class GMGSI:
+    """
+    ## Global Mosaic of Geostationary Satellite Imagery (GMGSI) Product
+    https://www.ospo.noaa.gov/Products/imagery/gmgsi/
+
+    provides global coverage from 60N to 60S using data from five geostationary satellites
+    GOES-16 (75W), GOES-17 (137.2W), Meteosat-11 (0 degrees), Meteosat-8 (41.5E), and Himawari-8 (140.7E)
+
+    Available in four spectral bands:
+        - visible  (~0.6 µm)
+        - shortwave infrared (~3.8 µm)
+        - mid-wave infrared (water vapor) (~6.7 µm)
+        - longwave infrared (~12.0 µm)
+
+    spatial resolution = 8km
+
+    temporal resolution = 1hr
+    """
+
     LONG_WAVE = "GMGSI_LW"
     SHORT_WAVE = "GMGSI_SW"
     WATER_VAPOR = "GMGSI_WV"
@@ -122,6 +141,9 @@ class GMGSI:
     PARAMETERS = frozenset((LONG_WAVE, SHORT_WAVE, WATER_VAPOR, VISIBLE))
     DIRECTORY = dict(
         zip(PARAMETERS, ("LONGWAVE", "SHORTWAVE", "WATERVAPOR", "VISIBLE"))
+    )
+    RESOLUTION = namedtuple("Resolution", ["spatial", "temporal"])(
+        spatial="8km", temporal="1hr"
     )
 
     def load(self) -> xr.Dataset:
