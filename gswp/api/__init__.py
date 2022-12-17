@@ -18,8 +18,7 @@ def minimum_diffrence(
     target = target[:, np.newaxis]
     if engine == "dask":
         diff = abs(da.array(target) - da.array(values))
-        index = da.argmin(diff, axis=0)
+        return da.argmin(diff, axis=0)
     else:
         diff = abs(target - values)
-        index = np.argmin(diff, axis=0)
-    return index
+        return np.argmin(diff, axis=0)
