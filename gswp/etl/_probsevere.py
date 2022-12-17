@@ -76,9 +76,7 @@ def transfer(data: Iterable[FeatureCollection]) -> xr.Dataset:
 
 
 def load(ds: xr.Dataset, store: Path) -> None:
-    append_dim = None
-    if store.exists():
-        append_dim = "time"
+    append_dim = "time" if store.exists() else None
     ds.to_zarr(store, append_dim=append_dim)
 
 

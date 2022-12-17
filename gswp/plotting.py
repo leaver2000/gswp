@@ -16,7 +16,7 @@ def geoaxes(
     figsize: tuple[float, float] = (6, 9),
 ) -> tuple[Figure, GeoAxes]:
 
-    fig = plt.figure(num if num else uuid.uuid1(), figsize=figsize)
+    fig = plt.figure(num or uuid.uuid1(), figsize=figsize)
 
     ax: GeoAxes = axes(projection=projection)
 
